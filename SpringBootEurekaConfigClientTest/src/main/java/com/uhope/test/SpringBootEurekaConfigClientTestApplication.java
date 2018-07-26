@@ -15,11 +15,20 @@ public class SpringBootEurekaConfigClientTestApplication {
 	}
 
 
-	@Value("${hello}")
+/*	@Value("${hello}")
 	private String hello;
 
 	@GetMapping(value = "/getHello")
 	public String getHello(){
 		return "Hello:"+hello;
+	}*/
+
+
+	@Value("${server.port}")
+	private String port;
+
+	@GetMapping(value = "/getPort")
+	public String getPort(){
+		return "Hello"+port;
 	}
 }
