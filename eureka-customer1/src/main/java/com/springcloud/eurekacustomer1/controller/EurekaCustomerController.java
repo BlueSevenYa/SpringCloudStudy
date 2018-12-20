@@ -37,4 +37,16 @@ public class EurekaCustomerController {
         return r;
     }
 
+    @GetMapping(value = "/addString")
+    public String addString(@RequestParam Integer a,@RequestParam Integer b){
+        LOG.info("a=" + a + " ,b=" + b);
+        List<ServiceInstance> list = discoveryClient.getInstances(" customer-service");
+        list.forEach(serviceInstance -> LOG.info("host:" + serviceInstance.getHost()
+                + ",  instanceId" + serviceInstance.getInstanceId()
+                + ",  serviceId" + serviceInstance.getServiceId()));
+        Integer r = a + b;
+
+        return "customer-service" + r;
+    }
+
 }
